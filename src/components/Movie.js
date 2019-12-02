@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import './style/movie.css';
 
 import { callDetailsMovie, callMovieCredits } from './../services/moviesDb';
 
@@ -18,8 +19,7 @@ export default class Movie extends Component {
       match: { params },
     } = this.props;
     const movie = await callDetailsMovie(params.id);
-    this.setState({ movie }, () => {});
-    console.log(this.state.movie);
+    this.setState({ movie });
   }
 
   async fetchMovieCredits() {
@@ -27,8 +27,7 @@ export default class Movie extends Component {
       match: { params },
     } = this.props;
     const { cast: credits } = await callMovieCredits(params.id);
-    this.setState({ credits }, () => {});
-    console.log(this.state.credits, 'credit');
+    this.setState({ credits });
   }
 
   render() {
@@ -42,47 +41,31 @@ export default class Movie extends Component {
     return (
       loader || (
         <div>
-          <h1
-            style={{
-              fontFamily: 'Roboto, sans-serif',
-              textAlign: 'center',
-              margin: '10px',
-            }}
-          >
-            Title: {title}
-          </h1>
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'space-around',
-              height: '500px',
-            }}
-          >
+          <h1 className="titleMovie">Title: {title}</h1>
+          <div className="containerMovie">
             <img
-              style={{
-                borderRadius: '7px',
-                height: '100%',
-                display: 'block',
-              }}
+              className="imgMovie"
               src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
               alt="movie cover"
             />
+            <div className="infoMovie">
+              <p>
+                Genre :{' '}
+                {genres.map(genre => (
+                  <span key={genre.id}>{genre.name} </span>
+                ))}
+              </p>
+              <p>Synopsis: {overview} </p>
+              <p>
+                Acteurs et actrices :{' '}
+                {credits.map(credit => (
+                  <Link key={credit.id} to={`/credit/${credit.id}`}>
+                    <span>{credit.name} - </span>
+                  </Link>
+                ))}
+              </p>
+            </div>
           </div>
-          <p>
-            Genre :{' '}
-            {genres.map(genre => (
-              <span>{genre.name} </span>
-            ))}
-          </p>
-          <p>Synopsis: {overview} </p>
-          <p>
-            Acteurs et actrices :{' '}
-            {credits.map(credit => (
-              <Link to={`/credit/${credit.id}`}>
-                <span>{credit.name} - </span>
-              </Link>
-            ))}
-          </p>
         </div>
       )
     );

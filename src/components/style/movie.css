@@ -1,0 +1,22 @@
+.titleMovie {
+    font-family: Roboto, sans-serif;
+    text-align: center;
+    margin: 10px
+}
+
+.containerMovie {
+    display: flex;
+    justify-content: space-around;
+    height: 500px;
+}
+
+.imgMovie {
+    border-radius: 7px;
+    height: 100%;
+    display: block;
+}
+
+.infoMovie {
+    display: flex;
+    flex-direction: column;
+}

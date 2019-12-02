@@ -1,0 +1,20 @@
+.titleActor {
+    text-align: center;
+}
+
+.containerImgActor {
+    display: flex;
+    justify-content: space-around;
+    height: 500px;
+}
+
+.imgActor {
+    border-radius: 7px;
+    height: 100%;
+    display: block;
+}
+
+.infoActorContainer {
+    display: flex;
+    flex-direction: column;
+}

@@ -46,3 +46,11 @@ export async function callDetailCreditMovie(id) {
   );
   return results;
 }
+
+export async function searchMovie(query) {
+  const results = await axios.get(`https://api.themoviedb.org/3/search/multi`, {
+    params: { api_key: auth.api_key, query: query },
+  });
+  console.log(results);
+  return results;
+}

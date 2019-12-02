@@ -5,16 +5,28 @@ import {
   callDetailCredit,
   callDetailCreditMovie,
 } from './../services/moviesDb';
+import './style/actor.css';
 
 export default class Actor extends Component {
   state = {
     actor: {},
     filmography: [],
   };
+
   componentDidMount() {
+    this.fetchActorData();
+  }
+  componentDidUpdate(prevProps) {
+    if (this.props.match.params.idCredit !== prevProps.match.params.idCredit) {
+      this.fetchActorData();
+    }
+  }
+
+  fetchActorData = () => {
     this.fetchDetailsActor();
     this.fetchCreditMovie();
-  }
+  };
+
   async fetchDetailsActor() {
     const {
       match: { params },
@@ -31,14 +43,9 @@ export default class Actor extends Component {
     const {
       data: { cast: filmography },
     } = await callDetailCreditMovie(params.idCredit);
-    this.setState(
-      {
-        filmography,
-      },
-      () => {
-        console.log('toto', this.state.filmography);
-      }
-    );
+    this.setState({
+      filmography,
+    });
   }
   render() {
     const {
@@ -54,29 +61,37 @@ export default class Actor extends Component {
     } = this.state;
     return (
       <div>
-        <h1>{name}</h1>
-        <div>
+        <h1 className="titleActor">{name}</h1>
+        <div className="containerImgActor">
           <img
-            src={`https://image.tmdb.org/t/p/w500/${profile_path}`}
+            className="imgActor"
+            src={
+              !profile_path
+                ? `http://cul7ure.fr/wp-content/uploads/2017/09/1216-1024x1024.jpg`
+                : `https://image.tmdb.org/t/p/w500/${profile_path}`
+            }
             alt="actor"
           />
+
+          <div className="infoActorContainer">
+            <p>Lieu de naissance : {place_of_birth}</p>
+            <p>Anniversaire : {birthday}</p>
+            <p>Biographie : {biography}</p>
+            {!!homepage && (
+              <p>
+                Site Web : <a href={homepage}>{homepage}</a>
+              </p>
+            )}
+            <div>
+              Filmographie :{' '}
+              {filmography.map(movie => (
+                <Link key={movie.id} to={`/movie/${movie.id}`}>
+                  <p>{movie.title}</p>
+                </Link>
+              ))}
+            </div>
+          </div>
         </div>
-        <p>Lieu de naissance : {place_of_birth}</p>
-        <p>Anniversaire : {birthday}</p>
-        <p>Biographie : {biography}</p>
-        {!!homepage && (
-          <p>
-            Site Web : <a href={homepage}>{homepage}</a>
-          </p>
-        )}
-        <p>
-          Filmographie :{' '}
-          {filmography.map(movie => (
-            <Link to={`/movie/${movie.id}`}>
-              <p key={movie.id}>{movie.title}</p>
-            </Link>
-          ))}
-        </p>
       </div>
     );
   }

@@ -1,16 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SearchBar from './SearchBar';
+import './style/home.css';
 
 export default function Home() {
   return (
-    <div>
+    <div className="containerHomeImg">
       <Link to="/">
         <img
-          style={{ margin: '10px' }}
+          className="imgHome"
           src="https://img.icons8.com/dusk/64/000000/home.png"
           alt="home"
         />
       </Link>
+      <SearchBar></SearchBar>
     </div>
   );
 }

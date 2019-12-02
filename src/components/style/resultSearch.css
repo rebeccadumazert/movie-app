@@ -1,0 +1,24 @@
+.resultMovie {
+    display: flex;
+    width: 100%;
+    color: grey;
+    background: white;
+}
+
+.isHighLightedResult {
+    display: flex;
+    width: 100%;
+    color: white;
+    background: blue
+}
+
+.titleSearch {
+    flex: 1 1 auto;
+    padding: 15px;
+}
+
+.containerImgSearch img {
+    width: 100%;
+    padding: 5px;
+    border-radius: 7px;
+}

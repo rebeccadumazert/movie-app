@@ -1,0 +1,15 @@
+.containerHomeImg {
+    display: flex;
+    align-items: center;
+    background-color: gainsboro;
+    position: relative;
+}
+
+.imgHome {
+    margin: 10px
+}
+
+.containerImgSearch {
+    display: flex;
+    flex: 0 0 6vw;
+}
