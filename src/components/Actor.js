@@ -7,6 +7,8 @@ import {
 } from './../services/moviesDb';
 import './style/actor.css';
 
+const URL_IMG = 'https://image.tmdb.org/t/p/w500/';
+
 export default class Actor extends PureComponent {
   state = {
     actor: {},
@@ -16,8 +18,17 @@ export default class Actor extends PureComponent {
   componentDidMount() {
     this.fetchActorData();
   }
-  componentDidUpdate(prevProps) {
-    if (this.props.match.params.idCredit !== prevProps.match.params.idCredit) {
+  componentDidUpdate({
+    match: {
+      params: { idCredit: id },
+    },
+  }) {
+    const {
+      match: {
+        params: { idCredit },
+      },
+    } = this.props;
+    if (idCredit !== id) {
       this.fetchActorData();
     }
   }
@@ -29,20 +40,24 @@ export default class Actor extends PureComponent {
 
   async fetchDetailsActor() {
     const {
-      match: { params },
+      match: {
+        params: { idCredit },
+      },
     } = this.props;
-    const { data: actor } = await callDetailCredit(params.idCredit);
+    const { data: actor } = await callDetailCredit(idCredit);
     this.setState({
       actor,
     });
   }
   async fetchCreditMovie() {
     const {
-      match: { params },
+      match: {
+        params: { idCredit },
+      },
     } = this.props;
     const {
       data: { cast: filmography },
-    } = await callDetailCreditMovie(params.idCredit);
+    } = await callDetailCreditMovie(idCredit);
     this.setState({
       filmography,
     });
@@ -54,8 +69,8 @@ export default class Actor extends PureComponent {
         homepage,
         biography,
         birthday,
-        place_of_birth,
-        profile_path,
+        place_of_birth: placeOfBirth,
+        profile_path: profilePath,
       },
       filmography,
     } = this.state;
@@ -66,20 +81,23 @@ export default class Actor extends PureComponent {
           <img
             className="imgActor"
             src={
-              !profile_path
+              !profilePath
                 ? `http://cul7ure.fr/wp-content/uploads/2017/09/1216-1024x1024.jpg`
-                : `https://image.tmdb.org/t/p/w500/${profile_path}`
+                : `${URL_IMG}${profilePath}`
             }
-            alt="actor"
+            alt="pix actor/actress"
           />
 
           <div className="infoActorContainer">
-            <p>Lieu de naissance : {place_of_birth}</p>
+            <p>Lieu de naissance : {placeOfBirth}</p>
             <p>Anniversaire : {birthday}</p>
             <p>Biographie : {biography}</p>
             {!!homepage && (
               <p>
-                Site Web : <a href={homepage}>{homepage}</a>
+                Site Web :{' '}
+                <a target={'_blank'} href={homepage}>
+                  {homepage}
+                </a>
               </p>
             )}
             <div>

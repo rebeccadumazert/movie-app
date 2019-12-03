@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import { callDiscoverMovies } from '../services/moviesDb';
-import './style/Movies.css';
+import './style/movies.css';
 
 export default class Movies extends Component {
   state = {
