@@ -1,11 +1,11 @@
-.containerHomeImg {
+.containerHeaderImg {
     display: flex;
     align-items: center;
     background-color: gainsboro;
     position: relative;
 }
 
-.containerHomeImgNight {
+.containerHeaderImgNight {
     background-color: #070926;
     display: flex;
     align-items: center;

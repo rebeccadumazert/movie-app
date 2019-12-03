@@ -4,7 +4,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Movies from './components/Movies';
 import Movie from './components/Movie';
 import Actor from './components/Actor';
-import Home from './components/Home';
+import Header from './components/Header';
 import LanguageContext from './LanguageContext';
 
 import './App.css';
@@ -52,7 +52,7 @@ class App extends React.Component {
                     <Route
                       path="/"
                       render={props => (
-                        <Home {...props} lang={lang} night={night}></Home>
+                        <Header {...props} lang={lang} night={night}></Header>
                       )}
                     ></Route>
                     <Route

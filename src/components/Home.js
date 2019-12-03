@@ -4,18 +4,18 @@ import SearchBar from './SearchBar';
 import { Language } from './Language';
 import { NightMode } from './NightMode';
 
-import './style/home.css';
+import './style/header.css';
 
-export default function Home(props) {
+export default function Header(props) {
   const {
     night: { night, changeNightMode },
     lang,
   } = props;
   return (
-    <div className={night ? 'containerHomeImgNight' : 'containerHomeImg'}>
+    <div className={night ? 'containerHeaderImgNight' : 'containerHeaderImg'}>
       <Link to="/">
         <img
-          className="imgHome"
+          className="imgHeader"
           src="https://img.icons8.com/dusk/64/000000/home.png"
           alt="home"
         />
