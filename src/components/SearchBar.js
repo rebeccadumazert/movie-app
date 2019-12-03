@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import { searchMovie } from './../services/moviesDb';
 import ResultSearchMovie from './ResultSearchMovie';
 import ResultSearchPerson from './ResultSearchPerson';
-import ResultSearchTv from './ResultSearchTv';
+import { ResultSearchTv } from './ResultSearchTv';
 import './style/searchBar.css';
 
 const MEDIA_URL = {
@@ -13,7 +13,7 @@ const MEDIA_URL = {
   tv: 'tv',
 };
 
-class SearchBar extends Component {
+class SearchBar extends PureComponent {
   state = {
     userSearch: '',
     resultsSearch: [],
@@ -101,9 +101,6 @@ class SearchBar extends Component {
     }
   };
 
-  redirection = () => {
-    console.log('coucou');
-  };
   render() {
     return (
       <div className="searchBarContainer">

@@ -1,11 +1,11 @@
 import axios from 'axios';
 import { auth } from './auth';
 
-export async function callDiscoverMovies() {
+export async function callDiscoverMovies(language) {
   const {
     data: { results: movies },
   } = await axios.get('https://api.themoviedb.org/3/discover/movie', {
-    params: auth,
+    params: { ...auth, language },
   });
   return movies;
 }
@@ -49,8 +49,7 @@ export async function callDetailCreditMovie(id) {
 
 export async function searchMovie(query) {
   const results = await axios.get(`https://api.themoviedb.org/3/search/multi`, {
-    params: { api_key: auth.api_key, query: query },
+    params: { ...auth, query: query },
   });
-  console.log(results);
   return results;
 }

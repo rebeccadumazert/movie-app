@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import './style/resultSearch.css';
 
-export default class ResultSearchPerson extends Component {
+export default class ResultSearchPerson extends PureComponent {
   render() {
     const {
       result: { name, profile_path },

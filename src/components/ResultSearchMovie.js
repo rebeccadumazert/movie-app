@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import './style/resultSearch.css';
 
-export default class ResultSearchMovie extends Component {
+export default class ResultSearchMovie extends PureComponent {
   render() {
     const {
       result: { original_title, poster_path },

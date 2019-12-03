@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Link } from 'react-router-dom';
 import './style/movie.css';
 
 import { callDetailsMovie, callMovieCredits } from './../services/moviesDb';
 
-export default class Movie extends Component {
+export default class Movie extends PureComponent {
   state = {
     movie: {},
     credits: [],
@@ -45,7 +45,11 @@ export default class Movie extends Component {
           <div className="containerMovie">
             <img
               className="imgMovie"
-              src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+              src={
+                !poster_path
+                  ? 'http://cul7ure.fr/wp-content/uploads/2017/09/1216-1024x1024.jpg'
+                  : `https://image.tmdb.org/t/p/w500/${poster_path}`
+              }
               alt="movie cover"
             />
             <div className="infoMovie">

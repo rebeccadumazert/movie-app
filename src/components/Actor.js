@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Link } from 'react-router-dom';
 
 import {
@@ -7,7 +7,7 @@ import {
 } from './../services/moviesDb';
 import './style/actor.css';
 
-export default class Actor extends Component {
+export default class Actor extends PureComponent {
   state = {
     actor: {},
     filmography: [],
