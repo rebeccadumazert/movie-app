@@ -102,9 +102,9 @@ export default class Actor extends PureComponent {
             )}
             <div>
               Filmographie :{' '}
-              {filmography.map(movie => (
-                <Link key={movie.id} to={`/movie/${movie.id}`}>
-                  <p>{movie.title}</p>
+              {filmography.map(({ id, title }) => (
+                <Link key={id} to={`/movie/${id}`}>
+                  <p>{title}</p>
                 </Link>
               ))}
             </div>

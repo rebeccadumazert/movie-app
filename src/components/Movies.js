@@ -38,19 +38,19 @@ export default class Movies extends Component {
       <div className={night ? 'themeNight' : 'themeDay'}>
         <h1 className="titleFilms">LISTE DES FILMS</h1>
         <div className="gridFilms">
-          {movies.map(movie => (
-            <div key={movie.id} className="divGridFilms">
+          {movies.map(({ id, title, poster_path }) => (
+            <div key={id} className="divGridFilms">
               <Link
                 className={night ? 'linkMoviesNight' : 'linkMovies'}
-                to={`/movie/${movie.id}`}
+                to={`/movie/${id}`}
               >
                 <img
                   className={night ? 'imgMoviesNight' : 'imgMovies'}
-                  key={movie.id}
+                  key={id}
                   alt="film cover"
-                  src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}
+                  src={`https://image.tmdb.org/t/p/w300/${poster_path}`}
                 />
-                <p>{movie.title}</p>
+                <p>{title}</p>
               </Link>
             </div>
           ))}
