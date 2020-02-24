@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { callDiscoverMovies } from '../services/moviesDb';
 import './style/movies.css';
+const START_URL = 'https://image.tmdb.org/t/p/w300/';
 
 export default class Movies extends Component {
   state = {
@@ -48,7 +49,7 @@ export default class Movies extends Component {
                   className={night ? 'imgMoviesNight' : 'imgMovies'}
                   key={id}
                   alt="film cover"
-                  src={`https://image.tmdb.org/t/p/w300/${poster_path}`}
+                  src={`${START_URL}${poster_path}`}
                 />
                 <p>{title}</p>
               </Link>
