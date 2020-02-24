@@ -16,17 +16,19 @@ export default class Movie extends PureComponent {
 
   async fetchMovieDetails() {
     const {
-      match: { params },
+      match: { params: {id} },
     } = this.props;
-    const movie = await callDetailsMovie(params.id);
+    const movie = await callDetailsMovie(id);
     this.setState({ movie });
   }
 
   async fetchMovieCredits() {
     const {
-      match: { params },
+      match: {
+        params: { id },
+      },
     } = this.props;
-    const { cast: credits } = await callMovieCredits(params.id);
+    const { cast: credits } = await callMovieCredits(id);
     this.setState({ credits });
   }
 
@@ -55,16 +57,16 @@ export default class Movie extends PureComponent {
             <div className="infoMovie">
               <p>
                 Genre :{' '}
-                {genres.map(genre => (
-                  <span key={genre.id}>{genre.name} </span>
+                {genres.map(({ id, name }) => (
+                  <span key={id}>{name} </span>
                 ))}
               </p>
               <p>Synopsis: {overview} </p>
               <p>
                 Acteurs et actrices :{' '}
-                {credits.map(credit => (
-                  <Link key={credit.id} to={`/credit/${credit.id}`}>
-                    <span>{credit.name} - </span>
+                {credits.map(({ id, name }) => (
+                  <Link key={id} to={`/credit/${id}`}>
+                    <span>{name} - </span>
                   </Link>
                 ))}
               </p>
