@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import SearchBar from './SearchBar';
 import { Language } from './Language';
 import { NightMode } from './NightMode';
+import home from './home.png';
 
 import './style/header.css';
 
@@ -14,11 +15,7 @@ export default function Header(props) {
   return (
     <div className={night ? 'containerHeaderImgNight' : 'containerHeaderImg'}>
       <Link to="/">
-        <img
-          className="imgHeader"
-          src="https://img.icons8.com/dusk/64/000000/home.png"
-          alt="home"
-        />
+        <img className="imgHeader" src={home} alt="home" />
       </Link>
       <Language language={lang}></Language>
       <SearchBar></SearchBar>
