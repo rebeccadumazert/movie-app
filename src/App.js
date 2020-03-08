@@ -29,10 +29,9 @@ class App extends React.Component {
     });
   };
 
-  changeLanguage = ({ target: { value } }) => {
-    console.log(value, 'rrr');
+  changeLanguage = lang => {
     this.setState({
-      lang: value,
+      lang,
     });
   };
   render() {
@@ -47,19 +46,29 @@ class App extends React.Component {
           {night => (
             <LanguageContext.Provider value={this.state}>
               <LanguageContext.Consumer>
-                {lang => (
+                {({ lang, changeLanguage }) => (
                   <BrowserRouter>
                     <Route
                       path="/"
                       render={props => (
-                        <Header {...props} lang={lang} night={night}></Header>
+                        <Header
+                          {...props}
+                          lang={lang}
+                          changeLanguage={changeLanguage}
+                          night={night}
+                        ></Header>
                       )}
                     ></Route>
                     <Route
                       exact
                       path="/"
                       render={props => (
-                        <Movies {...props} lang={lang} night={night}></Movies>
+                        <Movies
+                          {...props}
+                          changeLanguage={changeLanguage}
+                          lang={lang}
+                          night={night}
+                        ></Movies>
                       )}
                     ></Route>
                     <Route path="/movie/:id" component={Movie}></Route>
