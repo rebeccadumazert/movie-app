@@ -18,3 +18,37 @@
     display: flex;
     flex-direction: column;
 }
+
+@media screen and (max-width: 600px) {
+    .containerImgActor {
+        display: block;
+    }
+
+    .filmoContainer {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .imgFilmoContainer {
+        padding: 1%;
+        flex: 1 1 30%
+    }
+
+    .imgFilmo {
+        width: 100%;
+        border-radius: 7%;
+    }
+
+    .titleMovie {
+        text-decoration: none;
+        font-size: small;
+        color: black;
+        margin: 1px
+    }
+
+    .infoActorContainer {
+        padding: 4%;
+        text-align: justify;
+    }
+
+}

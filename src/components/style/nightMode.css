@@ -1,3 +1,7 @@
+.nightMode {
+    display: flex
+}
+
 .label {
     display: inline-flex;
     align-items: center;
@@ -66,4 +70,10 @@
 
 .moonSun img {
     height: 100%;
+}
+
+@media screen and (max-width : 600px) {
+    .nightMode {
+        display: none;
+    }
 }

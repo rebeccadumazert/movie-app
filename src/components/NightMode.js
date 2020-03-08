@@ -3,7 +3,7 @@ import './style/nightMode.css';
 
 export const NightMode = ({ night, changeNightMode }) => {
   return (
-    <div style={{ display: 'flex' }}>
+    <div className="nightMode">
       {!night && (
         <div className="moonSun">
           <img

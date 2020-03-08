@@ -16,7 +16,9 @@
     padding: 10px
 }
 
-.containerImgSearch {
-    display: flex;
-    flex: 0 0 6vw;
+@media screen and (max-width: 600px) {
+    .imgHeader {
+        padding: 10px 0 10px 10px;
+
+    }
 }

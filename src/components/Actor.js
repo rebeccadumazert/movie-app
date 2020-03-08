@@ -8,6 +8,7 @@ import {
 import './style/actor.css';
 
 const URL_IMG = 'https://image.tmdb.org/t/p/w500/';
+const IMAGE_DEFAULT = 'https://i.ytimg.com/vi/JBvZD3u0TU4/maxresdefault.jpg';
 
 export default class Actor extends PureComponent {
   state = {
@@ -74,6 +75,7 @@ export default class Actor extends PureComponent {
       },
       filmography,
     } = this.state;
+    console.log(filmography);
     return (
       <div>
         <h1 className="titleActor">{name}</h1>
@@ -100,11 +102,24 @@ export default class Actor extends PureComponent {
                 </a>
               </p>
             )}
-            <div>
-              Filmographie :{' '}
-              {filmography.map(({ id, title }) => (
-                <Link key={id} to={`/movie/${id}`}>
-                  <p>{title}</p>
+            Filmographie :
+            <div className="filmoContainer">
+              {filmography.map(({ id, backdrop_path, title }) => (
+                <Link
+                  className="imgFilmoContainer"
+                  key={id}
+                  to={`/movie/${id}`}
+                >
+                  <img
+                    className="imgFilmo"
+                    src={
+                      !backdrop_path
+                        ? IMAGE_DEFAULT
+                        : `${URL_IMG}${backdrop_path}`
+                    }
+                    alt=""
+                  />
+                  <p className="titleMovie">{title}</p>
                 </Link>
               ))}
             </div>

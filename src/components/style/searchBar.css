@@ -1,20 +1,32 @@
 .searchBarContainer {
+    background-color: white;
+    display: flex;
+    align-items: center;
     margin-left: auto;
     margin-right: auto;
     position: relative;
 }
 
 .inputSearch {
+    border: none;
+    outline: none;
     width: 350px;
-    height: 40px;
 }
 
 .buttonStyle {
-    margin: 10px;
-    height: 40px;
+    border: none;
+    background-color: transparent;
+    margin: 8px 10px 8px;
 }
 
 .selectedComponent {
     position: absolute;
     width: 80%;
+}
+
+@media screen and (max-width : 600px) {
+    .inputSearch {
+        outline: none;
+        width: 100%;
+    }
 }

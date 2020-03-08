@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
-
 import { searchMovie } from './../services/moviesDb';
 import ResultSearchMovie from './ResultSearchMovie';
 import ResultSearchPerson from './ResultSearchPerson';
@@ -12,7 +11,6 @@ const MEDIA_URL = {
   movie: 'movie',
   tv: 'tv',
 };
-
 class SearchBar extends PureComponent {
   state = {
     userSearch: '',
@@ -113,7 +111,7 @@ class SearchBar extends PureComponent {
         />
 
         <button className="buttonStyle" onClick={this.clickBtnSearch}>
-          SEARCH
+          <img src="https://img.icons8.com/ios-glyphs/30/000000/search.png" />
         </button>
         <div className="selectedComponent">
           {this.state.resultsSearch.map((result, i) =>

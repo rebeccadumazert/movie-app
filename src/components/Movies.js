@@ -14,15 +14,13 @@ export default class Movies extends Component {
     this.fetchMoviesToDiscover();
   }
 
-  componentDidUpdate({ lang: { lang } }) {
+  componentDidUpdate({ lang }) {
     if (lang !== this.props.lang) {
       this.fetchMoviesToDiscover();
     }
   }
   fetchMoviesToDiscover = async () => {
-    const {
-      lang: { lang },
-    } = this.props;
+    const { lang } = this.props;
 
     const movies = await callDiscoverMovies(lang);
     this.setState({
