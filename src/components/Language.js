@@ -1,12 +1,17 @@
 import React from 'react';
+import { Flag } from './style/Language';
 
-export const Language = ({ language }) => {
+export const Language = ({ changeLanguage }) => {
   return (
     <div>
-      <select onChange={language.changeLanguage} name="lang" id="">
-        <option value="fr">Fr</option>
-        <option value="en">En</option>
-      </select>
+      <Flag
+        onClick={changeLanguage.bind(null, 'fr')}
+        src="https://img.icons8.com/color/48/000000/france.png"
+      />
+      <Flag
+        onClick={changeLanguage.bind(null, 'en')}
+        src="https://img.icons8.com/color/48/000000/usa.png"
+      />
     </div>
   );
 };

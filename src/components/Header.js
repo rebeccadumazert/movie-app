@@ -11,13 +11,14 @@ export default function Header(props) {
   const {
     night: { night, changeNightMode },
     lang,
+    changeLanguage,
   } = props;
   return (
     <div className={night ? 'containerHeaderImgNight' : 'containerHeaderImg'}>
       <Link to="/">
         <img className="imgHeader" src={home} alt="home" />
       </Link>
-      <Language language={lang}></Language>
+      <Language language={lang} changeLanguage={changeLanguage}></Language>
       <SearchBar></SearchBar>
       <NightMode night={night} changeNightMode={changeNightMode}></NightMode>
     </div>
