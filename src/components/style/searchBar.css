@@ -2,8 +2,7 @@
     background-color: white;
     display: flex;
     align-items: center;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
     position: relative;
 }
 
@@ -28,6 +27,10 @@
 }
 
 @media screen and (max-width : 600px) {
+    .searchBarContainer {
+        margin: 0 5%;
+    }
+
     .inputSearch {
         outline: none;
         width: 100%;
