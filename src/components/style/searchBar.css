@@ -8,6 +8,7 @@
 }
 
 .inputSearch {
+    padding-left: 10px;
     border: none;
     outline: none;
     width: 350px;
@@ -21,7 +22,9 @@
 
 .selectedComponent {
     position: absolute;
-    width: 80%;
+    top: 52px;
+    width: 100%;
+    box-shadow: 0px 0px 7px #c3bbbb;
 }
 
 @media screen and (max-width : 600px) {

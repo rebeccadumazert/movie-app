@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
 import { searchMovie } from './../services/moviesDb';
-import ResultSearchMovie from './ResultSearchMovie';
+import { ResultSearchMovie } from './ResultSearchMovie';
 import ResultSearchPerson from './ResultSearchPerson';
 import { ResultSearchTv } from './ResultSearchTv';
 import './style/searchBar.css';
@@ -18,18 +18,25 @@ class SearchBar extends PureComponent {
     highlightIndex: -1,
   };
 
+  clearSearchBar = () => {
+    this.setState({
+      userSearch: '',
+      resultsSearch: [],
+    });
+  };
+
   async fetchSearchMovie() {
     const {
-      data: { results: resultsSearch },
+      data: { results: resultsSearch = [] },
     } = await searchMovie(this.state.userSearch);
     this.setState({
-      resultsSearch,
+      resultsSearch: resultsSearch.slice(0, 5),
     });
   }
 
-  onChangeSearch = e => {
+  onChangeSearch = ({ target: { value: userSearch } }) => {
     this.setState({
-      userSearch: e.target.value,
+      userSearch,
       highlightIndex: -1,
     });
   };
@@ -44,6 +51,7 @@ class SearchBar extends PureComponent {
         <ResultSearchMovie
           key={result.id}
           result={result}
+          clearSearch={this.clearSearchBar}
           isHighLighted={isHighLighted}
         />
       ),
@@ -70,6 +78,7 @@ class SearchBar extends PureComponent {
       if (this.state.highlightIndex >= 0) {
         const media = this.state.resultsSearch[this.state.highlightIndex];
         this.props.history.push(`/${MEDIA_URL[media.media_type]}/${media.id}`);
+        this.clearSearchBar();
       } else {
         this.fetchSearchMovie();
       }
@@ -92,10 +101,7 @@ class SearchBar extends PureComponent {
       });
     }
     if (keyCode === 27) {
-      this.setState({
-        resultsSearch: [],
-        userSearch: '',
-      });
+      this.clearSearchBar();
     }
   };
 
@@ -111,7 +117,10 @@ class SearchBar extends PureComponent {
         />
 
         <button className="buttonStyle" onClick={this.clickBtnSearch}>
-          <img src="https://img.icons8.com/ios-glyphs/30/000000/search.png" />
+          <img
+            src="https://img.icons8.com/ios-glyphs/30/000000/search.png"
+            alt="magnifying glass"
+          />
         </button>
         <div className="selectedComponent">
           {this.state.resultsSearch.map((result, i) =>
