@@ -4,12 +4,13 @@
 
 .containerImgActor {
     display: flex;
-    justify-content: space-around;
     height: 500px;
+    padding-left: 2%;
 }
 
 .imgActor {
     border-radius: 7px;
+
     height: 100%;
     display: block;
 }
@@ -19,36 +20,40 @@
     flex-direction: column;
 }
 
+.filmoContainer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.imgFilmoContainer {
+    padding: 1%;
+    flex: 1 1 30%
+}
+
+.imgFilmo {
+    width: 100%;
+    border-radius: 7%;
+}
+
+.infoActorContainer {
+    padding: 4%;
+    text-align: justify;
+}
+
 @media screen and (max-width: 600px) {
     .containerImgActor {
         display: block;
     }
 
-    .filmoContainer {
-        display: flex;
-        flex-wrap: wrap;
+    .imgActor {
+        margin: auto;
     }
 
-    .imgFilmoContainer {
-        padding: 1%;
-        flex: 1 1 30%
-    }
-
-    .imgFilmo {
-        width: 100%;
-        border-radius: 7%;
-    }
-
-    .titleMovie {
+    .titleMovieFilmo {
         text-decoration: none;
         font-size: small;
         color: black;
         margin: 1px
-    }
-
-    .infoActorContainer {
-        padding: 4%;
-        text-align: justify;
     }
 
 }

@@ -119,7 +119,7 @@ export default class Actor extends PureComponent {
                     }
                     alt=""
                   />
-                  <p className="titleMovie">{title}</p>
+                  <p className="titleMovieFilmo">{title}</p>
                 </Link>
               ))}
             </div>
