@@ -1,15 +1,28 @@
 import React, { PureComponent } from 'react';
+import { withRouter } from 'react-router';
 import './style/resultSearch.css';
 
-export default class ResultSearchMovie extends PureComponent {
+class RsltSearchMovie extends PureComponent {
+  navigate = id => {
+    const {
+      history: { push },
+      clearSearch,
+    } = this.props;
+    push(`/movie/${id}`);
+    clearSearch();
+  };
+
   render() {
     const {
-      result: { original_title, poster_path },
+      result: { original_title, poster_path, id },
       isHighLighted,
     } = this.props;
     return (
       <div className={isHighLighted ? 'isHighLightedResult' : 'resultMovie'}>
-        <div className="containerImgSearch">
+        <div
+          className="containerImgSearch"
+          onClick={this.navigate.bind(null, id)}
+        >
           <img
             src={
               !poster_path
@@ -24,3 +37,4 @@ export default class ResultSearchMovie extends PureComponent {
     );
   }
 }
+export const ResultSearchMovie = withRouter(RsltSearchMovie);
