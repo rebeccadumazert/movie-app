@@ -23,7 +23,7 @@
     border-radius: 7px;
     height: 100%;
     display: block;
-
+    margin: auto;
 }
 
 .infoMovie {
@@ -64,5 +64,6 @@
 
     .containerImgMovie {
         height: 100%;
+        padding: 0;
     }
 }
