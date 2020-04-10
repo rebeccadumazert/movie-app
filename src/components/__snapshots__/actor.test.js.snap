@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Actor renders correctly 1`] = `
+<div>
+  <h1
+    className="titleActor"
+  />
+  <div
+    className="containerImgActor"
+  >
+    <img
+      alt="pix actor/actress"
+      className="imgActor"
+      src="http://cul7ure.fr/wp-content/uploads/2017/09/1216-1024x1024.jpg"
+    />
+    <div
+      className="infoActorContainer"
+    >
+      <p>
+        Lieu de naissance : 
+      </p>
+      <p>
+        Anniversaire : 
+      </p>
+      <p>
+        Biographie : 
+      </p>
+      Filmographie :
+      <div
+        className="filmoContainer"
+      />
+    </div>
+  </div>
+</div>
+`;

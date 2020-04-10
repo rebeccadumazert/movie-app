@@ -6,22 +6,21 @@
 
 .containerMovie {
     display: flex;
-    justify-content: space-around;
-    height: 500px;
 }
 
 .containerImgMovie {
+    flex: 1 1 900%;
     padding-left: 2%;
 }
 
 .actorName {
-    flex: 1 1 15%;
+    flex: 1 1 25%;
     padding: 1%;
 }
 
 .imgMovie {
+    width: 100%;
     border-radius: 7px;
-    height: 100%;
     display: block;
     margin: auto;
 }
@@ -49,7 +48,7 @@
     content: '';
     position: absolute;
     width: 100%;
-    height: 100%;
+
 }
 
 .actorImage {
@@ -63,7 +62,6 @@
     }
 
     .containerImgMovie {
-        height: 100%;
         padding: 0;
     }
 }
